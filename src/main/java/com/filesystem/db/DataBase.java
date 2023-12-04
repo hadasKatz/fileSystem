@@ -1,7 +1,9 @@
 package com.filesystem.db;
 
+import com.filesystem.FileSystem;
 import com.filesystem.entity.Dir;
 import com.filesystem.entity.Entity;
+import com.filesystem.entity.File;
 
 public class DataBase {
     private final DirsTable dirsTable;
@@ -13,8 +15,15 @@ public class DataBase {
     }
 
     public void addToDB(String name, Entity entity, String parentName){
-        // Adds to the dirs table
-        this.dirsTable.addParentDir(parentName, entity);
+        String grandParent = this.entityParent.getParent(parentName);
+        // The parent dir is not a child of other dir- add to table
+        if (grandParent == null){
+            // Adds to the dirs table
+            this.dirsTable.addParentDir(parentName, entity);
+        }
+        else{
+            this.dirsTable.addToGrandParentDir(grandParent, entity, parentName);
+        }
         // Adds to opposite mapping: child to parent
         this.entityParent.addDir(name, parentName);
     }

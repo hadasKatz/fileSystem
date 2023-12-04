@@ -20,6 +20,10 @@ public class Dir extends Entity{
         this.children.remove(name);
     }
 
+    public Entity getChild(String childName){
+        return this.children.get(childName);
+    }
+
     public void printDir() {
         Printer.print(this.toString());
     }

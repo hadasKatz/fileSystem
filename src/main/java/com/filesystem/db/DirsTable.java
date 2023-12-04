@@ -46,6 +46,12 @@ public class DirsTable implements Table{
         parentDir.addChild(entity);
     }
 
+    public void addToGrandParentDir(String grandParent, Entity entity, String parentName){
+        Dir grandParentDir = getDir(grandParent);
+        Dir parentDir = (Dir) grandParentDir.getChild(parentName);
+        parentDir.addChild(entity);
+    }
+
     public void deleteDir(String name){
         if (isDirExist(name)) {
             this.table.remove(name);

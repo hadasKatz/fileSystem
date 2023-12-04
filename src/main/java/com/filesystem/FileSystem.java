@@ -30,6 +30,7 @@ public class FileSystem {
         fileSystem.addFile("parent_1", "file_1", 50);
         fileSystem.addFile("parent_1", "file_2", 30);
         fileSystem.addDir("parent_2", "dir_1");
+        fileSystem.addFile("dir_1", "file_4", 80);
         fileSystem.addFile("parent_3", "file_5", 80);
         System.out.println("First Print:");
         fileSystem.showFileSystem();
