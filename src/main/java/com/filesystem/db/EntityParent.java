@@ -7,7 +7,7 @@ import java.util.HashMap;
     * The class contains a Map mapping between the child entity to it's parent
     * Therefor when given a file name to the delete function, no search is needed
  **/
-public class EntityParent {
+public class EntityParent implements Table {
     private final HashMap<String, String> table;
 
     public EntityParent() {

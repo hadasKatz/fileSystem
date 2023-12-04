@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * This class contains the Dirs table and it's functionality
  **/
-public class DirsTable {
+public class DirsTable implements Table{
     private final HashMap<String, Dir> table;
 
     public DirsTable() {
