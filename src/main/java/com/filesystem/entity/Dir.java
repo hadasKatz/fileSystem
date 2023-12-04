@@ -1,6 +1,7 @@
 package com.filesystem.entity;
 
-import java.util.ArrayList;
+import com.filesystem.Printer;
+
 import java.util.HashMap;
 
 public class Dir extends Entity{
@@ -20,23 +21,15 @@ public class Dir extends Entity{
     }
 
     public void printDir() {
-        System.out.println(this);
+        Printer.print(this.toString());
     }
 
     // The function gets all dir children, then set the formatting and returns the dir string including its children
     @Override
     public String toString() {
-        ArrayList<String> childList = new ArrayList<>();
-        for (Entity children: this.children.values()) {
-            childList.add(children.toString());
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        if (childList.size() > 0){
-            stringBuilder.append(childList.get(0));
-            for (int i = 1 ; i < childList.size(); i++){
-                stringBuilder.append(", ").append(childList.get(i));
-            }
-        }
-        return "Dir: {" + super.toString() + ", children:[" + stringBuilder + "]}";
+        String childrenList =  Printer.createPrintList(this.children.values());
+        String toPrintChildrenList = Printer.setBrackets(childrenList, Printer.bracketsTypes.SQUARER);
+        String stringDir = super.toString() + ", children:" + toPrintChildrenList;
+        return "Dir: " + Printer.setBrackets(stringDir, Printer.bracketsTypes.CURLY);
     }
 }
